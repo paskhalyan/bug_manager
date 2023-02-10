@@ -17,6 +17,10 @@ class BugSerializer(serializers.ModelSerializer, StatusValidator):
     class Meta:
         model = Bug
         fields = ('title', 'description', 'status', 'assignee_id')
+        extra_kwargs = {
+            'status': {'required': False},
+            'assignee_id': {'required': False},
+        }
 
 
 class BugDetailSerializer(serializers.ModelSerializer, StatusValidator):
